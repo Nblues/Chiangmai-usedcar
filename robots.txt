@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://chiangraiusedcar.com/sitemap.xml

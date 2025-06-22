@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Title & Meta (dynamic) -->
+  <title>{{ car.title }} | ครูหนึ่งรถสวย</title>
+  <meta name="description" content="{{ car.title }} ราคาปัจจุบัน {{ car.variants.edges[0].node.price }} บาท ฟรีดาวน์ รับประกัน 1 ปี">
+  <link rel="canonical" href="https://chiangraiusedcar.com/car-detail.html?carId={{ car.id }}" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ car.title }} | ครูหนึ่งรถสวย" />
+  <meta property="og:description" content="{{ car.title }} ราคาปัจจุบัน {{ car.variants.edges[0].node.price }} บาท ฟรีดาวน์ รับประกัน 1 ปี" />
+  <meta property="og:image" content="{{ car.images.edges[0].node.src }}" />
+  <meta property="og:url" content="https://chiangraiusedcar.com/car-detail.html?carId={{ car.id }}" />
+  <meta property="og:type" content="product" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ car.title }} | ครูหนึ่งรถสวย" />
+  <meta name="twitter:description" content="{{ car.title }} ราคาปัจจุบัน {{ car.variants.edges[0].node.price }} บาท ฟรีดาวน์ รับประกัน 1 ปี" />
+  <meta name="twitter:image" content="{{ car.images.edges[0].node.src }}" />
+
+  <!-- Structured Data: JSON-LD Product & Offer -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{ car.title }}",
+    "image": [],
+    "description": "{{ car.description }}",
+    "brand": { "@type": "Brand", "name": "ครูหนึ่งรถสวย" },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://chiangraiusedcar.com/car-detail.html?carId={{ car.id }}",
+      "priceCurrency": "THB",
+      "price": "{{ car.variants.edges[0].node.price }}",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="detail.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+</head>
+<body>
+  <article>
+    <h1 id="car-title">กำลังโหลด...</h1>
+    <div id="car-images"></div>
+    <p id="car-desc"></p>
+    <p id="car-price"></p>
+    <a href="https://lin.ee/cJuakxZ" target="_blank">สอบถามผ่าน LINE</a>
+  </article>
+
+  <script src="detail.js" defer></script>
+</body>
+</html>

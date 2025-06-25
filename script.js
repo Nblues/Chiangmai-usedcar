@@ -86,40 +86,41 @@ function renderCars() {
   const start = (currentPage - 1) * carsPerPage;
   const end = start + carsPerPage;
   const cars = filteredCars.slice(start, end);
-  const html = cars.map(car => `
-    <div class="car-card">
-      <img src="${car.image || 'no-image.jpg'}" alt="${car.model}" loading="lazy">
-      <div class="car-title">${car.model} ${car.year ? "ปี " + car.year : ""}</div>
-      <div class="car-detail">${car.detail || ''}</div>
-      <div class="car-bottom-bar">
-        <span class="car-price">฿${Number(car.price).toLocaleString()}</span>
-        <span class="car-views"><span>👁</span> <span id="view-${car.id}">0</span> ครั้ง</span>
+  const html = cars.map(car => {
+    const productSchema = JSON.stringify({
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": car.model,
+      "image": car.image,
+      "description": car.detail,
+      "brand": { "@type": "Brand", "name": car.brand },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "THB",
+        "price": car.price,
+        "availability": "https://schema.org/InStock"
+      }
+    });
+    return `
+      <div class="car-card">
+        <img src="${car.image || 'no-image.jpg'}" alt="${car.model}" loading="lazy">
+        <div class="car-title">${car.model} ${car.year ? "ปี " + car.year : ""}</div>
+        <div class="car-detail">${car.detail || ''}</div>
+        <div class="car-bottom-bar">
+          <span class="car-price">฿${Number(car.price).toLocaleString()}</span>
+          <span class="car-views"><span>👁</span> <span id="view-${car.id}">0</span> ครั้ง</span>
+        </div>
+        <div class="car-actions">
+          <a class="detail-btn" href="car-detail.html?handle=${car.id}" target="_blank" onclick="increaseView('${car.id}')">ดูรายละเอียด</a>
+          <a class="line-btn" href="${lineURL}" target="_blank">LINE</a>
+          <a class="facebook-btn" href="${facebookURL}" target="_blank">Facebook</a>
+        </div>
+        <script type="application/ld+json">${productSchema}</script>
       </div>
-      <div class="car-actions">
-        <a class="detail-btn" href="car-detail.html?handle=${car.id}" target="_blank" onclick="increaseView('${car.id}')">ดูรายละเอียด</a>
-        <a class="line-btn" href="${lineURL}" target="_blank">LINE</a>
-        <a class="facebook-btn" href="${facebookURL}" target="_blank">Facebook</a>
-      </div>
-      <script type="application/ld+json">
-      ${JSON.stringify({
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": car.model,
-        "image": car.image,
-        "description": car.detail,
-        "brand": { "@type": "Brand", "name": car.brand },
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "THB",
-          "price": car.price,
-          "availability": "https://schema.org/InStock"
-        }
-      })}
-      </script>
-    </div>
-  `).join('');
+    `;
+  }).join('');
   document.getElementById('product-list').innerHTML = html || '<div style="text-align:center;color:#d44;font-size:1.3em;">ไม่พบข้อมูลรถที่ค้นหา</div>';
-  cars.forEach(car => updateViewCounter(car.id)); // <- แก้ชื่อ function ตรงนี้
+  cars.forEach(car => updateViewCounter(car.id));
 }
 
 function renderPagination() {
@@ -144,7 +145,7 @@ function increaseView(carId) {
   const ref = db.ref('carViews/' + carId);
   ref.transaction(current => (current || 0) + 1);
 }
-function updateViewCounter(carId) { // <- ต้องใช้ชื่อนี้
+function updateViewCounter(carId) {
   const viewRef = db.ref('carViews/' + carId);
   viewRef.once('value').then(snap => {
     const views = snap.val() || 0;

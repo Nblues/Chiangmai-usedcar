@@ -119,7 +119,7 @@ function renderCars() {
     </div>
   `).join('');
   document.getElementById('product-list').innerHTML = html || '<div style="text-align:center;color:#d44;font-size:1.3em;">ไม่พบข้อมูลรถที่ค้นหา</div>';
-  cars.forEach(car => up26-06-2025 00:01:11ViewCounter(car.id));
+  cars.forEach(car => updateViewCounter(car.id)); // <- แก้ชื่อ function ตรงนี้
 }
 
 function renderPagination() {
@@ -144,7 +144,7 @@ function increaseView(carId) {
   const ref = db.ref('carViews/' + carId);
   ref.transaction(current => (current || 0) + 1);
 }
-function up26-06-2025 00:01:11ViewCounter(carId) {
+function updateViewCounter(carId) { // <- ต้องใช้ชื่อนี้
   const viewRef = db.ref('carViews/' + carId);
   viewRef.once('value').then(snap => {
     const views = snap.val() || 0;

@@ -1,22 +1,8 @@
-name: Generate sitemap.xml
-
-on:
-  push:
-    branches: [main]
-  schedule:
-    - cron: '0 2 * * *'
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Generate sitemap.xml
+- name: Generate sitemap.xml
         run: |
           python3 <<'EOF'
           import os, datetime
+
           files = os.listdir('.')
           today = datetime.datetime.now().strftime('%Y-%m-%d')
           urls = []
@@ -39,11 +25,3 @@ jobs:
               sm.write("\n".join(urls))
               sm.write('\n</urlset>')
           EOF
-
-      - name: Commit & push sitemap.xml
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add sitemap.xml
-          git commit -m 'Auto update sitemap.xml [skip ci]' || echo "No changes"
-          git push

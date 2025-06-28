@@ -4,11 +4,13 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '0 2 * * *'   # รันทุกวันตี 2
+    - cron: '0 2 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write        # เพิ่มสิทธิ์ให้ workflow push code ได้
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -46,5 +48,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add sitemap.xml
-          git commit -m 'Auto update sitemap.xml [skip ci]' || echo "No changes"
-          git push
+          git diff --cached --quiet && echo "No changes" || (git commit -m 'Auto update sitemap.xml [skip ci]' && git push)

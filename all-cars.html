@@ -17,7 +17,6 @@
   <meta name="twitter:title" content="รถมือสองเชียงใหม่ รถบ้านฟรีดาวน์ | ครูหนึ่งรถสวย">
   <meta name="twitter:description" content="รวมรถบ้านคุณภาพดี รถมือสองเชียงใหม่ ผ่อนถูก ฟรีดาวน์ เช็คเครดิตเร็ว">
   <meta name="twitter:image" content="https://chiangraiusedcar.com/cover.jpg">
-
   <!-- BreadcrumbList JSON-LD -->
   <script type="application/ld+json">
     {
@@ -279,7 +278,7 @@
       const cars = filteredCars.slice(start, end);
       const html = cars.map(car => `
         <div class="car-card">
-          <img src="${car.image || 'no-image.jpg'}" alt="${car.model}" loading="lazy">
+          <img src="${car.image || 'no-image.jpg'}" alt="${car.model.replace(/"/g, '')}" loading="lazy">
           <div class="car-title">${car.model} ${car.year ? "ปี " + car.year : ""}</div>
           <div class="car-detail">${car.detail || ''}</div>
           <div class="car-price">฿${Number(car.price).toLocaleString()}</div>

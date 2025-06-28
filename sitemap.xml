@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- หน้าแรก -->
-  <url>
-    <loc>https://chiangraiusedcar.com/</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <!-- หน้ารวมรถ -->
-  <url>
-    <loc>https://chiangraiusedcar.com/all-cars</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- ตัวอย่างหน้ารายละเอียดรถแต่ละคัน -->
-  <url>
-    <loc>https://chiangraiusedcar.com/car-detail.html?handle=toyota-revo-2022</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chiangraiusedcar.com/car-detail.html?handle=ford-ranger-2021</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chiangraiusedcar.com/car-detail.html?handle=isuzu-dmax-2019</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- เพิ่มรถคันอื่นๆ ต่อได้อีกตามจำนวนจริง -->
-</urlset> 
+  <url><loc>https://chiangraiusedcar.com/car-detail.html</loc><lastmod>2025-06-28</lastmod><changefreq>daily</changefreq><priority>0.9</priority>    </url>
+  <url><loc>https://chiangraiusedcar.com/</loc><lastmod>2025-06-28</lastmod><changefreq>daily</changefreq><priority>1.0</priority>    </url>
+  <url><loc>https://chiangraiusedcar.com/all-cars.html</loc><lastmod>2025-06-28</lastmod><changefreq>daily</changefreq><priority>0.9</priority>    </url>
+</urlset>

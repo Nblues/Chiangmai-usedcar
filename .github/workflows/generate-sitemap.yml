@@ -16,30 +16,30 @@ jobs:
       - name: Generate sitemap.xml
         run: |
           python3 <<'EOF'
-import os, datetime
+          import os, datetime
 
-files = os.listdir('.')
-today = datetime.datetime.now().strftime('%Y-%m-%d')
-urls = []
-base = "https://chiangraiusedcar.com/"
-for f in files:
-    if f.endswith(".html"):
-        if f == "index.html":
-            url = base
-        else:
-            url = base + f
-        urls.append(f"""  <url>
-    <loc>{url}</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>{"1.0" if f == "index.html" else "0.9"}</priority>
-  </url>""")
-with open("sitemap.xml", "w", encoding="utf-8") as sm:
-    sm.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-    sm.write('<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">\n')
-    sm.write("\n".join(urls))
-    sm.write('\n</urlset>')
-EOF
+          files = os.listdir('.')
+          today = datetime.datetime.now().strftime('%Y-%m-%d')
+          urls = []
+          base = "https://chiangraiusedcar.com/"
+          for f in files:
+              if f.endswith(".html"):
+                  if f == "index.html":
+                      url = base
+                  else:
+                      url = base + f
+                  urls.append(f"""  <url>
+      <loc>{url}</loc>
+      <lastmod>{today}</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>{"1.0" if f == "index.html" else "0.9"}</priority>
+    </url>""")
+          with open("sitemap.xml", "w", encoding="utf-8") as sm:
+              sm.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+              sm.write('<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">\n')
+              sm.write("\n".join(urls))
+              sm.write('\n</urlset>')
+          EOF
 
       - name: Commit & push sitemap.xml
         run: |
@@ -47,4 +47,4 @@ EOF
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add sitemap.xml
           git commit -m 'Auto update sitemap.xml [skip ci]' || echo "No changes"
-          git push 
+          git push

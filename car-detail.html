@@ -167,14 +167,14 @@
   <script>
     // ==== CONFIG ====
     const rawHandle = new URLSearchParams(location.search).get("handle") || "";
-    const handle = rawHandle.replace(/[^a-zA-Z0-9\-_]/g, "");
+    const handle = rawHandle.replace(/[^a-z0-9-]/g, "");
     const SHOPIFY_DOMAIN = "kn-goodcar.com";
     const SITE_DOMAIN = "chiangraiusedcar.com";
     const STOREFRONT_ACCESS_TOKEN = "bb70cb008199a94b83c98df0e45ada67";
     // ==== END CONFIG ====
 
     async function fetchCarDetail(handle) {
-      const query = `{ productByHandle(handle: "${handle}") {
+      const query = `query GetProduct($handle: String!) { productByHandle(handle: $handle) {
         title description updatedAt
         images(first:20){ edges{ node{ url } } }
         variants(first:1){ edges{ node{ price{ amount } } } }
@@ -185,7 +185,7 @@
           "Content-Type": "application/json",
           "X-Shopify-Storefront-Access-Token": STOREFRONT_ACCESS_TOKEN
         },
-        body: JSON.stringify({ query })
+        body: JSON.stringify({ query, variables: { handle } })
       });
       const json = await res.json();
       return json.data.productByHandle;
@@ -215,13 +215,15 @@
         imgMain.src = images[0] || imgMain.src;
         imgMain.alt = car.title;
         thumbs.innerHTML = images.map((src, i) =>
-          `<img src="${src}" alt="${car.title.replace(/"/g, '&quot;')} รูปที่ ${i + 1}" class="${i == 0 ? 'active' : ''}" onclick="switchImg('${src.replace(/'/g, "\\'")}', this)">`
+          `<img src="${src}" alt="${car.title.replace(/"/g, '&quot;')} รูปที่ ${i + 1}" class="${i == 0 ? 'active' : ''}" data-src="${src.replace(/"/g, '&quot;')}">`
         ).join("");
-        window.switchImg = (src, el) => {
-          imgMain.src = src;
+        thumbs.addEventListener('click', e => {
+          const img = e.target.closest('img');
+          if (!img) return;
+          imgMain.src = img.dataset.src;
           [...thumbs.children].forEach(c => c.classList.remove('active'));
-          el.classList.add('active');
-        };
+          img.classList.add('active');
+        });
 
         // ---- Dynamic SEO Meta + JSON-LD Product ----
         document.getElementById('seo-title').textContent = car.title + " | ครูหนึ่งรถสวย รถมือสองเชียงใหม่";

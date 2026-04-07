@@ -1,4 +1,13 @@
 // --- CONFIG ---
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 const SHOPIFY_DOMAIN = "kn-goodcar.com";
 const STOREFRONT_ACCESS_TOKEN = "bb70cb008199a94b83c98df0e45ada67";
 const FIREBASE_CONFIG = {
@@ -68,7 +77,7 @@ function applyFilters() {
   const brand = document.getElementById('filter-brand').value.trim().toLowerCase();
   const keyword = document.getElementById('filter-keyword').value.trim().toLowerCase();
   filteredCars = allCars.filter(car => {
-    const matchBrand = !brand || (car.brand && car.brand.toLowerCase() === brand);
+    const matchBrand = !brand || (car.model && car.model.toLowerCase().startsWith(brand));
     const matchKeyword = !keyword || (
       (car.model && car.model.toLowerCase().includes(keyword)) ||
       (car.year && car.year.toString().includes(keyword)) ||
@@ -103,19 +112,19 @@ function renderCars() {
     });
     return `
       <div class="car-card">
-        <img src="${car.image || 'no-image.jpg'}" alt="${car.model}" loading="lazy">
-        <div class="car-title">${car.model} ${car.year ? "ปี " + car.year : ""}</div>
-        <div class="car-detail">${car.detail || ''}</div>
+        <img src="${escapeHtml(car.image || 'no-image.jpg')}" alt="${escapeHtml(car.model)}" loading="lazy">
+        <div class="car-title">${escapeHtml(car.model)} ${car.year ? "ปี " + escapeHtml(car.year) : ""}</div>
+        <div class="car-detail">${escapeHtml(car.detail || '')}</div>
         <div class="car-bottom-bar">
           <span class="car-price">฿${Number(car.price).toLocaleString()}</span>
-          <span class="car-views"><span>👁</span> <span id="view-${car.id}">0</span> ครั้ง</span>
+          <span class="car-views"><span>👁</span> <span id="view-${escapeHtml(car.id)}">0</span> ครั้ง</span>
         </div>
         <div class="car-actions">
-          <a class="detail-btn" href="car-detail.html?handle=${car.id}" target="_blank" onclick="increaseView('${car.id}')">ดูรายละเอียด</a>
+          <a class="detail-btn" href="car-detail.html?handle=${escapeHtml(car.id)}" target="_blank" onclick="increaseView('${escapeHtml(car.id)}')">ดูรายละเอียด</a>
           <a class="line-btn" href="${lineURL}" target="_blank">LINE</a>
           <a class="facebook-btn" href="${facebookURL}" target="_blank">Facebook</a>
         </div>
-        <script type="application/ld+json">${productSchema}</script>
+        <script type="application/ld+json">${productSchema.replace(/<\/script>/gi, '<\\/script>')}<\/script>
       </div>
     `;
   }).join('');

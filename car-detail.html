@@ -7,23 +7,23 @@
   <meta name="description" id="seo-desc" content="รถมือสองเชียงใหม่ ครูหนึ่งรถสวย รถบ้าน ฟรีดาวน์ ราคาถูก ผ่อนสบาย รถสวย เชียงใหม่ รถบ้านแท้ รับประกันคุณภาพ">
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="รถมือสองเชียงใหม่, รถบ้านเชียงใหม่, รถฟรีดาวน์, รถมือสองฟรีดาวน์, รถยนต์มือสอง, รถมือสองราคาถูก, รถบ้านเจ้าของขายเอง, เต็นท์รถเชียงใหม่, รถใช้แล้วเชียงใหม่, ซื้อขายรถมือสอง, รถมือสองเกรดA, รถบ้านฟรีดาวน์, รถมือสองเชียงราย">
-  <link rel="canonical" id="seo-canonical" href="https://chiangraiusedcar.com/car-detail.html">
+  <link rel="canonical" id="seo-canonical" href="https://kn-goodcar.com/car-detail.html">
   <meta property="og:title" id="og-title" content="รถมือสองเชียงใหม่ รถบ้านฟรีดาวน์ | ครูหนึ่งรถสวย">
   <meta property="og:description" id="og-desc" content="รายละเอียดรถมือสองเชียงใหม่ รถบ้าน ฟรีดาวน์ ราคาถูก รถสวยคุณภาพดี โดยครูหนึ่งรถสวย เชียงใหม่">
-  <meta property="og:image" id="og-image" content="https://chiangraiusedcar.com/cover.jpg">
-  <meta property="og:url" id="og-url" content="https://chiangraiusedcar.com/car-detail.html">
+  <meta property="og:image" id="og-image" content="https://kn-goodcar.com/cover.jpg">
+  <meta property="og:url" id="og-url" content="https://kn-goodcar.com/car-detail.html">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" id="tw-title" content="รถมือสองเชียงใหม่ รถบ้านฟรีดาวน์ | ครูหนึ่งรถสวย">
   <meta name="twitter:description" id="tw-desc" content="รายละเอียดรถมือสองเชียงใหม่ รถบ้าน ฟรีดาวน์ ราคาถูก รถสวยคุณภาพดี โดยครูหนึ่งรถสวย เชียงใหม่">
-  <meta name="twitter:image" id="tw-image" content="https://chiangraiusedcar.com/cover.jpg">
+  <meta name="twitter:image" id="tw-image" content="https://kn-goodcar.com/cover.jpg">
   <!-- JSON-LD Breadcrumb -->
   <script type="application/ld+json" id="breadcrumb-json">{
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "รถมือสองเชียงใหม่", "item": "https://chiangraiusedcar.com/all-cars.html"},
-      {"@type": "ListItem", "position": 2, "name": "รายละเอียดรถ", "item": "https://chiangraiusedcar.com/car-detail.html"}
+      {"@type": "ListItem", "position": 1, "name": "รถมือสองเชียงใหม่", "item": "https://kn-goodcar.com/all-cars.html"},
+      {"@type": "ListItem", "position": 2, "name": "รายละเอียดรถ", "item": "https://kn-goodcar.com/car-detail.html"}
     ]
   }</script>
   <!-- Organization Schema: เพิ่ม sameAs ครบทุกช่องทาง -->
@@ -31,8 +31,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "ครูหนึ่งรถสวย",
-    "url": "https://chiangraiusedcar.com/",
-    "logo": "https://chiangraiusedcar.com/logo.webp",
+    "url": "https://kn-goodcar.com/",
+    "logo": "https://kn-goodcar.com/logo.jpg",
     "sameAs": [
       "https://www.facebook.com/KN2car",
       "https://lin.ee/ng5yM32",
@@ -49,9 +49,6 @@
       "availableLanguage": ["Thai"]
     }]
   }</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     body {
@@ -159,22 +156,20 @@
         <div class="car-detail-actions">
           <a class="line-btn" href="https://lin.ee/ng5yM32" target="_blank">สอบถามผ่าน LINE</a>
           <a class="facebook-btn" href="https://www.facebook.com/KN2car" target="_blank">ดูรถบน Facebook</a>
-          <a class="back-btn" href="https://chiangraiusedcar.com/all-cars.html">← กลับหน้ารวมรถ</a>
+          <a class="back-btn" href="https://nblues.github.io/Chiangmai-usedcar/">← กลับหน้ารวมรถ</a>
         </div>
       </div>
     </div>
   </main>
   <script>
     // ==== CONFIG ====
-    const rawHandle = new URLSearchParams(location.search).get("handle") || "";
-    const handle = rawHandle.replace(/[^a-z0-9-]/g, "");
+    const handle = new URLSearchParams(location.search).get("handle");
     const SHOPIFY_DOMAIN = "kn-goodcar.com";
-    const SITE_DOMAIN = "chiangraiusedcar.com";
     const STOREFRONT_ACCESS_TOKEN = "bb70cb008199a94b83c98df0e45ada67";
     // ==== END CONFIG ====
 
     async function fetchCarDetail(handle) {
-      const query = `query GetProduct($handle: String!) { productByHandle(handle: $handle) {
+      const query = `{ productByHandle(handle: "${handle}") {
         title description updatedAt
         images(first:20){ edges{ node{ url } } }
         variants(first:1){ edges{ node{ price{ amount } } } }
@@ -185,84 +180,69 @@
           "Content-Type": "application/json",
           "X-Shopify-Storefront-Access-Token": STOREFRONT_ACCESS_TOKEN
         },
-        body: JSON.stringify({ query, variables: { handle } })
+        body: JSON.stringify({ query })
       });
       const json = await res.json();
       return json.data.productByHandle;
     }
 
     async function renderCarDetail() {
-      if (!handle) {
-        document.getElementById('car-title').textContent = "ไม่พบข้อมูลรถ";
-        return;
-      }
-      try {
-        const car = await fetchCarDetail(handle);
-        if (!car) {
-          document.getElementById('car-title').textContent = "ไม่พบข้อมูลรถ";
-          return;
+      if (!handle) return;
+      const car = await fetchCarDetail(handle);
+      if (!car) return;
+      document.title = car.title + " | ครูหนึ่งรถสวย รถมือสองเชียงใหม่";
+      document.getElementById('car-title').textContent = car.title;
+      document.getElementById('car-price').textContent = "฿" + Number(car.variants.edges[0]?.node.price.amount || "0").toLocaleString();
+      document.getElementById('car-meta').textContent = "อัปเดตล่าสุด: " + new Date(car.updatedAt).toLocaleDateString('th-TH');
+      document.getElementById('car-desc').textContent = car.description;
+
+      // รูปภาพทั้งหมด + thumbnails
+      const images = car.images.edges.map(e => e.node.url);
+      const imgMain = document.getElementById('car-image');
+      const thumbs = document.getElementById('car-thumbs');
+      imgMain.src = images[0] || imgMain.src;
+      thumbs.innerHTML = images.map((src, i) => `<img src="${src}" class="${i==0?'active':''}" onclick="switchImg('${src}', this)">`).join("");
+      window.switchImg = (src, el) => {
+        imgMain.src = src;
+        [...thumbs.children].forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+      };
+
+      // ---- Dynamic SEO Meta + JSON-LD Product ----
+      document.getElementById('seo-title').textContent = car.title + " | ครูหนึ่งรถสวย รถมือสองเชียงใหม่";
+      document.getElementById('seo-desc').setAttribute('content', (car.description || "") + " ฟรีดาวน์ เชียงใหม่ รถมือสองราคาถูก รถบ้านคุณภาพดี เชียงใหม่");
+      document.getElementById('seo-canonical').setAttribute('href', `https://${SHOPIFY_DOMAIN}/car-detail.html?handle=${handle}`);
+      document.getElementById('og-title').setAttribute('content', car.title + " | ครูหนึ่งรถสวย");
+      document.getElementById('og-desc').setAttribute('content', car.description);
+      document.getElementById('og-image').setAttribute('content', images[0] || "https://kn-goodcar.com/cover.jpg");
+      document.getElementById('og-url').setAttribute('content', `https://${SHOPIFY_DOMAIN}/car-detail.html?handle=${handle}`);
+      document.getElementById('tw-title').setAttribute('content', car.title + " | ครูหนึ่งรถสวย");
+      document.getElementById('tw-desc').setAttribute('content', car.description);
+      document.getElementById('tw-image').setAttribute('content', images[0] || "https://kn-goodcar.com/cover.jpg");
+
+      // Schema.org/Product
+      const schemaProduct = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": car.title,
+        "image": images,
+        "description": car.description,
+        "brand": { "@type": "Brand", "name": car.title.split(" ")[0] },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "THB",
+          "price": car.variants.edges[0]?.node.price.amount || "0",
+          "availability": "https://schema.org/InStock"
         }
-        document.title = car.title + " | ครูหนึ่งรถสวย รถมือสองเชียงใหม่";
-        document.getElementById('car-title').textContent = car.title;
-        document.getElementById('car-price').textContent = "฿" + Number(car.variants.edges[0]?.node.price.amount || "0").toLocaleString();
-        document.getElementById('car-meta').textContent = "อัปเดตล่าสุด: " + new Date(car.updatedAt).toLocaleDateString('th-TH');
-        document.getElementById('car-desc').textContent = car.description;
-
-        // รูปภาพทั้งหมด + thumbnails
-        const images = car.images.edges.map(e => e.node.url);
-        const imgMain = document.getElementById('car-image');
-        const thumbs = document.getElementById('car-thumbs');
-        imgMain.src = images[0] || imgMain.src;
-        imgMain.alt = car.title;
-        thumbs.innerHTML = images.map((src, i) =>
-          `<img src="${src}" alt="${car.title.replace(/"/g, '&quot;')} รูปที่ ${i + 1}" class="${i == 0 ? 'active' : ''}" data-src="${src.replace(/"/g, '&quot;')}">`
-        ).join("");
-        thumbs.addEventListener('click', e => {
-          const img = e.target.closest('img');
-          if (!img) return;
-          imgMain.src = img.dataset.src;
-          [...thumbs.children].forEach(c => c.classList.remove('active'));
-          img.classList.add('active');
-        });
-
-        // ---- Dynamic SEO Meta + JSON-LD Product ----
-        document.getElementById('seo-title').textContent = car.title + " | ครูหนึ่งรถสวย รถมือสองเชียงใหม่";
-        document.getElementById('seo-desc').setAttribute('content', (car.description || "") + " ฟรีดาวน์ เชียงใหม่ รถมือสองราคาถูก รถบ้านคุณภาพดี เชียงใหม่");
-        document.getElementById('seo-canonical').setAttribute('href', `https://${SITE_DOMAIN}/car-detail.html?handle=${handle}`);
-        document.getElementById('og-title').setAttribute('content', car.title + " | ครูหนึ่งรถสวย");
-        document.getElementById('og-desc').setAttribute('content', car.description);
-        document.getElementById('og-image').setAttribute('content', images[0] || `https://${SITE_DOMAIN}/cover.jpg`);
-        document.getElementById('og-url').setAttribute('content', `https://${SITE_DOMAIN}/car-detail.html?handle=${handle}`);
-        document.getElementById('tw-title').setAttribute('content', car.title + " | ครูหนึ่งรถสวย");
-        document.getElementById('tw-desc').setAttribute('content', car.description);
-        document.getElementById('tw-image').setAttribute('content', images[0] || `https://${SITE_DOMAIN}/cover.jpg`);
-
-        // Schema.org/Product
-        const schemaProduct = {
-          "@context": "https://schema.org/",
-          "@type": "Product",
-          "name": car.title,
-          "image": images,
-          "description": car.description,
-          "brand": { "@type": "Brand", "name": car.title.split(" ")[0] },
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "THB",
-            "price": car.variants.edges[0]?.node.price.amount || "0",
-            "availability": "https://schema.org/InStock"
-          }
-        };
-        let el = document.getElementById('product-json');
-        if (!el) {
-          el = document.createElement('script');
-          el.type = 'application/ld+json';
-          el.id = 'product-json';
-          document.head.appendChild(el);
-        }
-        el.textContent = JSON.stringify(schemaProduct, null, 2);
-      } catch (err) {
-        document.getElementById('car-title').textContent = "โหลดข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง";
+      };
+      let el = document.getElementById('product-json');
+      if (!el) {
+        el = document.createElement('script');
+        el.type = 'application/ld+json';
+        el.id = 'product-json';
+        document.head.appendChild(el);
       }
+      el.textContent = JSON.stringify(schemaProduct, null, 2);
     }
     renderCarDetail();
   </script>
